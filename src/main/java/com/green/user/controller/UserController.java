@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +17,6 @@ import com.green.user.mapper.UserMapper;
 @Controller
 @RequestMapping("/Users")
 public class UserController {
-
 	@Autowired
 	private UserMapper userMapper;
 
@@ -38,20 +36,16 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("users/write2");
 		mv.addObject("msg", "시영");
-
 		return mv;
 	}
 	// write2
 	@RequestMapping("/Write2")
 	public ModelAndView write2(UserDto dto) {
-		System.out.println("UserController write() userDto: " + dto);
-				
-		userMapper.insertUser2(dto);
-		
+		System.out.println("UserController write() userDto: " + dto);		
+		userMapper.insertUser2(dto);	
 		// 넘어온 데이터로 DB 에 저장		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:List");
-		
+		mv.setViewName("redirect:List");		
 		return mv;
 	}
 //	 WriteForm1
@@ -88,10 +82,8 @@ public class UserController {
 	@RequestMapping("/Delete")
 	public ModelAndView delete(UserDto dto) {
 		System.out.println("UserDto: " + dto);
-		
 		// db 의 자료를 삭제
 		userMapper.deleteUser(dto);
-		
 		// 목록으로 이동
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:List");
@@ -100,14 +92,11 @@ public class UserController {
 	@RequestMapping("/UpdateForm")
 	public ModelAndView updateform(UserDto dto) {
 		// 넘어온 DTO
-		System.out.println("넘어온 DTO: " + dto);
-		
+		System.out.println("넘어온 DTO: " + dto);	
 		// 수정을 위해 DB 에서 조회한 정보
-		UserDto user = userMapper.getUser(dto);
-		
+		UserDto user = userMapper.getUser(dto);		
 		// 조회한 DTO
-		System.out.println("조회한 DTO: " + user);
-			
+		System.out.println("조회한 DTO: " + user);			
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("users/update");	
 		mv.addObject("user", user);				
@@ -118,7 +107,6 @@ public class UserController {
 	// 설정하여 응답을 한번에 구성하는 방식
 	@RequestMapping("/Update")
 	public ModelAndView update(UserDto dto) {
-
 		userMapper.updateUser(dto);
 		
 		ModelAndView mv = new ModelAndView();
@@ -136,8 +124,9 @@ public class UserController {
 		
 		//String userid = dto.getUserid(); 	// 넘어온 userid
 		UserDto user = userMapper.getIdDupCheck2(dto);  // 조회한 userid			
-		if(user == null)
+		if(user == null) {
 			user = new UserDto();
+		}
 		return user;
 	}
 	// Users/IdCheckWindow
@@ -157,9 +146,9 @@ public class UserController {
 		
 		UserDto user = userMapper.getUser(dto);
 		String msg = "<b class='red'>사용할 수 없는 아이디입니다.</b>";
-		if(user == null) 
+		if(user == null) {
 			msg = "<b class='red'>사용 가능한 아이디입니다.</b>";
-		
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("users/idcheck");
 		mv.addObject("msg", msg);

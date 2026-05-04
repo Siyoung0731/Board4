@@ -49,12 +49,12 @@
 	<!-- 아이디 중복 확인 -->
 	<select id="getIdDupCheck2">
 		SELECT USERID
+			   ,PWD
+			   ,USERNAME
+			   ,EMAIL
+			   ,UPOINT
+			   ,TO_CHAR(REGDATE. 'YYYY-MM-DD HH:24:MI:SS') REGDATE
 		FROM TUSER
-		WHERE USERID = #{userid}
-	</select>
-	<select id="getIdDupCheck1">
-		SELECT USERID, PWD, USERNAME, EMAIL, UPOINT, REGDATE
-		FROM TUSER
-		WHERE USERID = #{userid}
+		WHERE USERID = #{ userid }
 	</select>
 </mapper>

@@ -13,7 +13,7 @@
 <body>
 	<h2>아이디 중복확인</h2>
 	<form action="/Users/IdCheck" method="get">
-		<input type="text" name="userid" value='${param.userid}'/>
+		<input type="text" name="userid" value="${ param.userid }"/>
 		<input type="submit" value="중복확인" /><br/>
 		<div id="msg">${ msg }</div> 
 		<input type="button" value="사용하기" id="btnClose" />
@@ -28,9 +28,9 @@
 		}) 
 		
 		//사용하기 버튼 클릭
-		const btnCloseEl = document.querySelector('#btnClose')
-		
+		const btnCloseEl = document.querySelector('#btnClose')	
 		btnCloseEl.addEventListener('click', function() {
+			
 			const thisUidEl = window.document.querySelector('[name=userid]')
 			// write2.jsp의 userEl
 			const parentUidEl = window.opener.document.querySelector('[name="userid"]')

@@ -80,7 +80,6 @@
 		
 		const formEl = document.querySelector('form');	
 		const useridEl = document.querySelector('[name="userid"]');	
-		const pwdoldEl = document.querySelector('#pwdold');	
 		const pwdEl = document.querySelector('#pwd');	
 		const pwd2El = document.querySelector('#pwd2');	
 		const usernameEl = document.querySelector('[name="username"]');	
@@ -93,22 +92,6 @@
 			if(useridEl.value.trim() == ''){
 				alert('아이디를 입력하세요')
 				useridEl.focus();
-				e.preventDefault() // Event 취소
-				e.stopPropagation() // Event 버블링 방지
-				return;
-			} 
-			// 옛날비밀번호 입력 체크
-			if(pwdoldEl.value.trim() == ''){
-				alert('옛날 비밀번호를 입력하세요')
-				pwdoldEl.focus();
-				e.preventDefault() // Event 취소
-				e.stopPropagation() // Event 버블링 방지
-				return;
-			} 
-			// 옛날비밀번호 != 조회된 비밀번호 user.pwd 체크(실무 사용 안함)
-			if(pwdoldEl.value != '${user.pwd}'){
-				alert('현재 비밀번호와 일치하지 않습니다.')
-				pwdoldEl.focus();
 				e.preventDefault() // Event 취소
 				e.stopPropagation() // Event 버블링 방지
 				return;
@@ -165,6 +148,8 @@
 			window.open(url, target, feature)
 		})	
 	</script>
+	
+	
 	<script>
 		//아이디 중복확인2(Ajax)
 		const btnDup2El = document.querySelector('#dupCheck2')
@@ -175,6 +160,8 @@
 				useridEl.focus()
 				return;
 			}
+			
+			
 			let url = '/Users/IdDupCheck2?userid=' + useridEl.value;
 			fetch(url)
 			.then(response => response.json())
@@ -182,12 +169,17 @@
 				console.log(data)
 				if(data.userid != null)
 					alert('사용 불가능')
+					idDupChecked = false;
 				else
 					alert('사용 가능')
+					idDupChecked = true;
 			});	
 		})
 		
 		//userid 의 value 가 바뀌면 idDupChecked = false;
+		useridEl.addEventListener('change', function() {
+			idDupChecked = false;	
+		})
 		
 	</script>
 </body>

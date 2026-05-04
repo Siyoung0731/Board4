@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>list</title>
-<link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-<link href="/css/common.css" rel="stylesheet" /> 
+<title>Insert title here</title>
 <style>
 	table {width:100%}
 	td {
@@ -33,14 +30,15 @@
 </head>
 <body>
 	<main>
-	  <h2>회원 목록 ${msg}</h2>
+  	  <h2>게시글 목록</h2>
 	  <table>
 	  	<tr>
-		  <td>회원ID</td>
-  		  <td>회원이름</td>
-  		  <td>이메일</td>
-  		  <td>회원 포인트</td>
-  		  <td>등록일</td>
+		  <td>순번</td>
+  		  <td>회원번호</td>
+  		  <td>제목</td>
+  		  <td>내용</td>
+  		  <td>작성자</td>
+  		  <td>수정</td>
   		  <td>삭제</td>
   		  <td>목록</td>
 	  	</tr>
@@ -50,7 +48,7 @@
  			    [<a href="/">Home</a>]
  		    </td>
 	  	</tr>
-	  	<c:forEach var="user" items="${userList}">
+	  	<c:forEach var="board" items="${boardList}">
 		  	<tr>
 	  		  <td>${ user.userid }</td>		<!-- menu.getMenu_id() -->
 	  		  <td>${ user.username }</td>
@@ -65,12 +63,3 @@
 	</main>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
