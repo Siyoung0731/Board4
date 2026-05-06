@@ -50,10 +50,10 @@
 	  	</tr>
 	  	<c:forEach var="board" items="${boardList}">
 		  	<tr>
-	  		  <td>${ user.userid }</td>		<!-- menu.getMenu_id() -->
-	  		  <td>${ user.username }</td>
-	  		  <td>${ user.email }</td>
-	  		  <td>${ user.upoint }</td>
+	  		  <td>${ board.idx }</td>		<!-- menu.getMenu_id() -->
+	  		  <td>${ board.menu_id }</td>
+	  		  <td>${ board.title }</td>
+	  		  <td>${ board. }</td>
 	  		  <td>${ user.regdate }</td>
 	  		  <td><a href="/Users/Delete?userid=${ user.userid }">삭제</a></td>
 	  		  <td><a href="/Users/UpdateForm?userid=${user.userid}">수정</a></td>

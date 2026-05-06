@@ -21,10 +21,14 @@
 	<script>
 		//새 창(페이지)이 열릴 때	
  		document.addEventListener("DOMContentLoaded", function() {
- 			//const thisUidEl = window.document.querySelector('[name=userid]')
-			// write2.jsp의 userEl
-			//const parentUidEl = window.opener.document.querySelector('[name="userid"]')
-			//thisUidEl.value = parentUidEl.value; 
+ 			// 페이지를 처음 호출했는가 체크
+ 			// ?first=true 활용방법
+ 			if( '${first}' == 'true') {
+	 			const thisUidEl = window.document.querySelector('[name=userid]')
+				//write2.jsp의 userEl
+				const parentUidEl = window.opener.document.querySelector('[name="userid"]')
+				thisUidEl.value = parentUidEl.value;  				
+ 			}
 		}) 
 		
 		//사용하기 버튼 클릭

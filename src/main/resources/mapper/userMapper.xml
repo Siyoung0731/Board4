@@ -30,22 +30,23 @@
 	</select>
 	<!-- user insert -->
 	<insert id="insertUser">
-		INSERT INTO TUSER(USERID, PWD, USERNAME, EMAIL, UPOINT, REGDATE)
-		VALUES( #{ userid }, #{ pwd }, #{ username }, #{ email }, #{ upoint }, #{ regdate })
+		INSERT INTO TUSER(
+			USERID, 
+			PWD, 
+			USERNAME, 
+			EMAIL
+			UPOINT,
+			REGDATE
+		)
+		VALUES( 
+			#{ userid }, 
+			#{ pwd }, 
+			#{ username }, 
+			#{ email },
+			1000,
+			sysdate
+		)
 	</insert>
-	<insert id="insertUser2">
-		INSERT INTO TUSER(USERID, PWD, USERNAME, EMAIL)
-		VALUES( #{ userid }, #{ pwd }, #{ username }, #{ email })
-	</insert>
-	<!-- user delete -->
-	<delete id="deleteUser">
-		DELETE FROM TUSER WHERE USERID = #{ userid }
-	</delete>
-	<!-- user update -->
-	<update id="updateUser">
-		UPDATE TUSER SET USERNAME = #{username}, PWD = #{pwd}, EMAIL = #{email}
-		WHERE USERID = #{userid}
-	</update>
 	<!-- 아이디 중복 확인 -->
 	<select id="getIdDupCheck2">
 		SELECT USERID
@@ -53,8 +54,31 @@
 			   ,USERNAME
 			   ,EMAIL
 			   ,UPOINT
-			   ,TO_CHAR(REGDATE. 'YYYY-MM-DD HH:24:MI:SS') REGDATE
+			   ,TO_CHAR(REGDATE, 'YYYY-MM-DD HH:24:MI:SS') REGDATE
 		FROM TUSER
 		WHERE USERID = #{ userid }
 	</select>
+	<!-- user delete -->
+	<delete id="deleteUser">
+		DELETE FROM TUSER
+		 WHERE USERID = #{ userid }
+	</delete>
+	<!-- user update -->
+	<update id="updateUser">
+		UPDATE  TUSER
+		 SET    PWD    = #{ UserDto.pwd   },
+		        USERNAME  = #{ UserDto.username },
+		        EMAIL     = #{ UserDto.email    }
+		 WHERE  USERID    = #{ UserDto.userid   }
+		  AND PWD 	  = #{ oldpwd }
+	</update>
+	<!-- 사용자 수정: map , map.pwd(Error) -->
+		<update id="updateUser2">
+		UPDATE  TUSER
+		 SET    PWD    = #{ pwd },
+		        USERNAME  = #{ username },
+		        EMAIL     = #{ email    }
+		 WHERE  USERID    = #{ userid   }
+		  AND PWD 	  = #{ oldpwd }
+	</update>
 </mapper>

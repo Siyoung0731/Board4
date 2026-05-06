@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.board.dto.BoardDto;
 import com.green.board.mapper.BoardMapper;
 import com.green.menus.dto.MenuDTO;
+
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -30,4 +32,5 @@ public class BoardController {
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
+	
 }
