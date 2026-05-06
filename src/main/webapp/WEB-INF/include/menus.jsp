@@ -4,6 +4,8 @@
 
   <table class="menu">
     <tr>
+    
+    
       <c:forEach var="menu" items="${ menuList }">
         <td>
           <a href="/Board/List?menu_id=${ menu.menu_id }">
