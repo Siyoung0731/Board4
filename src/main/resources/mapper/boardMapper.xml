@@ -9,12 +9,13 @@
 		    IDX,
 		    MENU_ID,
 		    TITLE,
-		    CONTENT,
 		    WRITER,
 		    TO_CHAR(REGDATE, 'YYYY-MM-DD') REGDATE,
 		    HIT
 		FROM
 		    BOARD
+		WHERE
+			MENU_ID = #{menu_id}
 		ORDER BY IDX DESC
 	</select>
 </mapper>

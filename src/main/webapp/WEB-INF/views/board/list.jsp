@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib  prefix="c"  uri="jakarta.tags.core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>board</title>
+<link rel="shortcut icon" href="/img/favicon2.png" type="image/x-icon">
+<link href="/css/common.css" rel="stylesheet" />
 <style>
-	table {width:100%}
+	table { width:100% }
 	td {
 		padding : 5px;
 		text-align : center;
 	}
-	tr:first-child {
+	tr:first-of-type {
 		background-color : black;
 		color:white; 
 		
@@ -30,33 +33,34 @@
 </head>
 <body>
 	<main>
+	  <%@include file="/WEB-INF/include/menus.jsp" %>
   	  <h2>게시글 목록</h2>
 	  <table>
 	  	<tr>
-		  <td>순번</td>
-  		  <td>회원번호</td>
+		  <td>번호</td>
   		  <td>제목</td>
-  		  <td>내용</td>
   		  <td>작성자</td>
-  		  <td>수정</td>
+  		  <td>날짜</td>
+  		  <td>조회수</td>
   		  <td>삭제</td>
-  		  <td>목록</td>
+  		  <td>수정</td>
 	  	</tr>
 		  <tr>
  		    <td colspan="7">
- 			    [<a href="/Users/WriteForm">회원등록</a>]&nbsp;&nbsp;&nbsp;
+ 			    [<a href="/Board/WriteForm">새 게시글 추가</a>]&nbsp;&nbsp;&nbsp;
  			    [<a href="/">Home</a>]
  		    </td>
 	  	</tr>
+	  	
 	  	<c:forEach var="board" items="${boardList}">
 		  	<tr>
-	  		  <td>${ board.idx }</td>		<!-- menu.getMenu_id() -->
-	  		  <td>${ board.menu_id }</td>
+	  		  <td>${ board.idx }</td>		
 	  		  <td>${ board.title }</td>
-	  		  <td>${ board. }</td>
-	  		  <td>${ user.regdate }</td>
-	  		  <td><a href="/Users/Delete?userid=${ user.userid }">삭제</a></td>
-	  		  <td><a href="/Users/UpdateForm?userid=${user.userid}">수정</a></td>
+	  		  <td>${ board.writer }</td>
+	  		  <td>${ board.regdate }</td>
+	  		  <td>${ board.hit }</td>
+	  		  <td><a href="/Board/Delete?idx=${board.idx}">삭제</a></td>
+	  		  <td><a href="/Board/UpdateForm?idx=${board.idx}">수정</a></td>
 		  	</tr>
 	  	</c:forEach>
 	  </table>

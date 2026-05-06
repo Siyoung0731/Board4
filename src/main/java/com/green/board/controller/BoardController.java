@@ -10,25 +10,34 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.board.dto.BoardDto;
 import com.green.board.mapper.BoardMapper;
 import com.green.menus.dto.MenuDTO;
+import com.green.menus.mapper.MenuMapper;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+@Slf4j 
 @Controller
 @RequestMapping("/Board")
 public class BoardController {
 	@Autowired
+	private MenuMapper menuMapper;
+	@Autowired
 	private BoardMapper boardMapper;
 	
-	// /Board/List
+	// /Board/List?menu_id=MENU01
 	@RequestMapping("/List")
 	public ModelAndView list(MenuDTO mto) {
+		// 메뉴 전체 목록 조회 - menus.jsp
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		log.info("menuList:" + menuList);
+		
+		// 게시물 목록 조회 - list.jsp(menu_id=MENU01)
+		//List<BoardDto> boardList = boardMapper.getBoardList2("MENU01");
 		List<BoardDto> boardList = boardMapper.getBoardList(mto);
 		log.info("boardList:" + boardList);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/list");
+		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
