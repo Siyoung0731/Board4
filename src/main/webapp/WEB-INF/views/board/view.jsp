@@ -67,6 +67,10 @@
 	}
 	#table1 tr:nth-of-type(4) {
 		height: 400px;
+		td:nth-of-type(4) {
+			text-align: left;
+			vertical-align: baseline;
+		}
 	}
 </style>
 <!-- <script> 위치는 항상 style보다 밑에 -->

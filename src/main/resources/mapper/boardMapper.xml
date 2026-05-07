@@ -17,6 +17,12 @@
 		ORDER BY 
 			IDX DESC
 	</select>
+	<!-- 메뉴 한개 조회 -->
+	<select id="getMenu">
+		SELECT MENU_ID, MENU_NAME, MENU_SEQ
+		FROM MENUS
+		WHERE MENU_ID = #{menu_id}
+	</select>
 	<!-- idx로 게시글 조회 -->
 	<select id="getBoard" resultType="com.green.board.dto.BoardDto">
 		SELECT
@@ -38,4 +44,31 @@
 		 SET HIT = HIT + 1
 		 WHERE IDX = #{idx}
 	</update>
+	<!-- 게시글 추가 -->
+	<insert id="insertBoard">
+		INSERT INTO board (
+		    IDX,
+		    MENU_ID,
+		    TITLE,
+		    CONTENT,
+		    WRITER
+		) VALUES ( 
+		    (SELECT NVL(MAX(IDX), 0) + 1 FROM BOARD),
+		    #{menu_id},
+		    #{title},
+		    #{content},
+		    #{writer}
+		)
+	</insert>
+	<!-- 게시글 수정 -->
+	<update id="updateBoard">
+		UPDATE BOARD
+		SET TITLE = #{title}, WRITER = #{writer}, CONTENT = #{content}
+		WHERE IDX = #{idx}
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard">
+		DELETE FROM BOARD
+		WHERE IDX = #{idx}
+	</delete>
 </mapper>

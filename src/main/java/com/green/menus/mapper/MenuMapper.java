@@ -19,7 +19,10 @@ public interface MenuMapper {
 
 	void updateMenu(MenuDTO dto);
 
-	void insertMenu2(MenuDTO dto);	
+	void insertMenu2(MenuDTO dto);
+
+	String getMenuName(String menu_id);	
+	
 }
 
 

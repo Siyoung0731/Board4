@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>write</title>
+<title>update</title>
 <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 <link href="/css/common.css" rel="stylesheet" /> 
 <style>
@@ -45,10 +45,15 @@
 <body>
 	<main>
 		<%@include file="/WEB-INF/include/menus.jsp" %>
-		<h2>${menu_name} 게시글 작성</h2>
-		<form action="/Board/Write" method="post">
-		 <input type="hidden" name="menu_id" value="${ menu_id }">
+		<h2>게시글 수정</h2>
+		<form action="/Board/Update?idx=${idx}" method="post">
 		  <table id="table1">
+  		    <tr>
+		      <td><span class="red">*</span>아이디</td>
+		      <td>
+		      	<input type="text" name="menu_id" value="${menu_id}" readonly />
+		      </td>
+		    </tr>
 		    <tr>
 		      <td><span class="red">*</span>제목</td>
 		      <td>
@@ -57,7 +62,7 @@
 		    </tr>
    		    <tr>
 		      <td><span class="red">*</span>작성자</td>
-		      <td><input type="text" name="writer" /></td>
+		      <td><input type="text" name="writer"/></td>
 		    </tr>
 		    <tr>
 		      <td>내용</td>
@@ -65,7 +70,7 @@
 		    </tr>
 		    <tr>
 		      <td colspan="2">
-		      	<input type="submit" value="추가" />
+		      	<input type="submit" value="수정" />
 		      	<input type="button" value="목록" 
 		      	onclick="window.location.href='/Board/List?menu_id=${menu_id}'"/>
 		      </td>

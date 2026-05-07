@@ -39,7 +39,7 @@
      <table>
       <tr>
         <td><span class="red">*</span> 사용자 아이디</td>
-        <td><input type="text"     name="userid"  value="${ user.userid }"  readonly /></td>
+        <td><input type="text" name="userid"  value="${ user.userid }"  readonly /></td>
       </tr>
       <tr>
         <td><span class="red">*</span>옛날 비밀 번호</td>

@@ -14,5 +14,12 @@ public interface BoardMapper {
 
 	BoardDto getBoard(BoardDto bto);
 
-	void incHit(BoardDto bto);	
+	void incHit(BoardDto bto);
+
+	void insertBoard(BoardDto bto);
+
+	void updateBoard(BoardDto bto);
+
+	void deleteBoard(BoardDto bto);	
+	
 }
