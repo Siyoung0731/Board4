@@ -57,7 +57,7 @@
 		    </tr>
    		    <tr>
 		      <td><span class="red">*</span>작성자</td>
-		      <td><input type="text" name="writer" /></td>
+		      <td><input type="text" name="writer"/></td>
 		    </tr>
 		    <tr>
 		      <td>내용</td>
