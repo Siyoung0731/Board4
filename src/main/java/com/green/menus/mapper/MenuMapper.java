@@ -15,14 +15,13 @@ public interface MenuMapper {
 
 	void deleteMenu(MenuDTO dto);
 
-	MenuDTO getMenu(MenuDTO dto);
+	MenuDTO getMenu(MenuDTO mto);
 
 	void updateMenu(MenuDTO dto);
 
 	void insertMenu2(MenuDTO dto);
 
 	String getMenuName(String menu_id);	
-	
 }
 
 

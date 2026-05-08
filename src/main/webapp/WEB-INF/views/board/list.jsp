@@ -44,7 +44,7 @@
 <body>
 	<main>
 	  <%@include file="/WEB-INF/include/menus.jsp" %>
-  	  <h2>${menu.menu_name} 게시글 목록</h2>
+  	  <h2 class="h2">${menu.menu_name} 게시글 목록</h2>
 	  <table class="list">
 	  	<tr>
 		  <td>번호</td>
@@ -60,11 +60,11 @@
  		    </td>
 	  	</tr>
 	  	
-	  	<c:forEach var="board" items="${ boardList }">
+	  	<c:forEach var="board" items="${ bList }">
 		  	<tr>
 	  		  <td>${ board.idx }</td>		
 	  		  <td class="title">
-	  		  	<a href="/Board/View?idx=${board.idx}">
+	  		  	<a href="/Board/View?idx=${board.idx}&menu_id=${menu_id}">
 	  		  	  ${ board.title }
 	  		  	</a>
   		  	  </td>

@@ -24,7 +24,7 @@
 		background: white;
 		border: 1px solid black;
 	}
-	input[type=text], input[type=number] {
+	input[type=text] {
 		width: 100%;
 	}
 	input[type=submit], input[type=button] {

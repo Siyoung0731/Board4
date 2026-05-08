@@ -45,28 +45,25 @@
 <body>
 	<main>
 		<%@include file="/WEB-INF/include/menus.jsp" %>
-		<h2>게시글 수정</h2>
-		<form action="/Board/Update?idx=${idx}" method="post">
+		<h2>${menu_name} 게시글 수정</h2>
+		<form action="/Board/Update?idx=${board.idx}" method="post">
 		  <table id="table1">
   		    <tr>
-		      <td><span class="red">*</span>아이디</td>
+		      <td><span class="red">*</span>글번호</td>
 		      <td>
-		      	<input type="text" name="menu_id" value="${menu_id}" readonly />
+		      	<input type="text" name="idx" value="${idx}" readonly />
 		      </td>
 		    </tr>
 		    <tr>
 		      <td><span class="red">*</span>제목</td>
-		      <td>
-		      	<input type="text" name="title"  />
+		      <td colspan="3">
+		      	<input type="text" name="title" value="${board.title}"/>
 		      </td>
 		    </tr>
    		    <tr>
-		      <td><span class="red">*</span>작성자</td>
-		      <td><input type="text" name="writer"/></td>
-		    </tr>
-		    <tr>
-		      <td>내용</td>
-		      <td><textarea name="content"></textarea></td>
+		      <td>수정할 내용</td>
+		      <!-- textarea 는 value 에 값을 안 넣어주고 바깥부분에 값을 넣어줌 -->
+		      <td colspan="3"><textarea name="content" >${board.content}</textarea></td>
 		    </tr>
 		    <tr>
 		      <td colspan="2">
